@@ -1,17 +1,13 @@
 <?php
 
+// dabut datus no datu bazes un izvadit ar html
 require "functions.php";
+require "Database.php";
 
 echo "Bonjour, IPa22!";
 
-$connection_string = "mysql:host=localhost;port=3306;dbname=blog_rudis;user=root;password=;charset=utf8mb4;";
-$connection = new PDO($connection_string);
-
-$query = $connection->prepare("SELECT * FROM posts");
-
-$query->execute();
-
-$posts = $query->fetchAll(PDO::FETCH_ASSOC);
+$db = new Database();
+$posts = $db->execute();
 
 echo "<h1>Posts</h1>";
 
