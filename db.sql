@@ -1,7 +1,6 @@
-CREATE DATABASE blog_IPa22;
-USE blog_IPa22;
+CREATE DATABASE blog_rudis;
+USE blog_rudis;
 
-SELECT * FROM posts;
 
 CREATE TABLE posts (
 id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -13,3 +12,5 @@ INSERT INTO posts
 VALUES
 ("My First Blog post"),
 ("My Second Blog post");
+
+SELECT * FROM posts;

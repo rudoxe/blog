@@ -1,8 +1,9 @@
 <?php
 
-function dd($data) {
+function dd($data, $type = " sigma") {
+    echo $type;
     echo "<pre>";
-    var_dump($data);
+    print_r($data, true);
     echo "</pre>";
     die();
     }

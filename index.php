@@ -11,5 +11,13 @@ $query = $connection->prepare("SELECT * FROM posts");
 
 $query->execute();
 
-$posts = $query->fetchAll();
-dd($posts);
+$posts = $query->fetchAll(PDO::FETCH_ASSOC);
+
+echo "<h1>Posts</h1>";
+
+
+echo "<ol>";
+foreach($posts as $post) {
+    echo "<li>" . $post["title"] . "</li>";
+}
+echo "</ol>";
