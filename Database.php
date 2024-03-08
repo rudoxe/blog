@@ -13,6 +13,7 @@ class Database {
 
         $connection_string = "mysql:" . http_build_query($config, "", ";");
         $this->connection = new PDO($connection_string);
+        $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     }
 
     public function execute($query_string) {
@@ -21,7 +22,7 @@ class Database {
         
         $query->execute();
         
-        return $query->fetchAll(PDO::FETCH_ASSOC);
+        return $query->fetchAll();
         
 }
 }
