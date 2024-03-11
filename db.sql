@@ -17,14 +17,28 @@ SELECT * FROM posts;
 
 
 CREATE TABLE categories (
-id INT PRIMARY KEY AUTO_INCREMENT
-name VARCHAR(255) NOT NULL,
-description TEXT
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(255) NOT NULL,
+	description TEXT
 );
+INSERT INTO categories
+(name)
+VALUES
+("sport"),
+("music"),
+("food");
 
-INSERT INTO categories (NAME) VALUES ('sport'), ('music'), ('food');
 
-ALTER TABLE posts ADD COLUMN category_id INT;
+ALTER TABLE posts 
+ADD category_id INT NOT NULL DEFAULT 1;
 
-UPDATE posts SET category_id = (SELECT id FROM categories WHERE name = 'sport') WHERE id = 1;
-UPDATE posts SET category_id = (SELECT id FROM categories WHERE name = 'food') WHERE id = 2;
+
+ALTER TABLE posts
+ADD FOREIGN KEY (category_id) REFERENCES categories(id);
+
+UPDATE posts
+SET category_id = 3
+WHERE id = 2;
+
+
+SELECT * FROM posts;
