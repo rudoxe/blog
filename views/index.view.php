@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<nav>
-    <a href="/about.php">About us</a>
-    <a href="/post.php">Posts</a>
-    <a href="/story.php">Story</a>
-</nav>
+<?php require "components/head.php" ?>    
+<?php require "components/navbar.php" ?>
 <h1>Posts</h1>
 <form>
 <input name='id'/>
@@ -27,5 +16,4 @@
     <li> <?= $post["title"] ?> </li>
 <?php } ?>
 </ol>
-</body>
-</html>
+<?php require "components/footer.php" ?>

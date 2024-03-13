@@ -1,29 +1,22 @@
 <?php
 
-// dabut datus no datu bazes un izvadit ar html
-require "functions.php";
-$config = require "config.php";
-require "Database.php";
+echo "bonjour";
 
-echo "Bonjour, IPa22 🥖";
+$url = parse_url($_SERVER["REQUEST_URI"])["path"];
 
-$db = new Database($config);
-
-$query_string = "SELECT * FROM posts";
-$params = [];
-if(isset($_GET['id']) && $_GET["id"] != "") {
-    // .= panem ieprieksejo vertibu un pieliek where klat <3
-    $query_string .= " WHERE id=:id";
-   // $params = [":id" => $_GET["id"]];
-    $params [":id"] = $_GET["id"];
+// ja lietotajs aiziet uz /, tad paradit
+// controllers/index.php
+if ($url == "/") {
+    require "controllers/index.php";
+}
+// ja lietotajs aiziet uz /about,
+// tad paradit controllers/about.php
+if ($url == "/about") {
+    require "controllers/about.php";
 }
 
-if(isset($_GET['name']) && $_GET["name"] != "") {
-    $query_string .= " JOIN categories ON posts.category_id=categories.id WHERE name=:name";
-    $params [":name"] = $_GET["name"];
+// ja lietotajs aizeit uz story,
+// tad paradit controllers/story.php
+if ($url == "/story") {
+    require "controllers/story.php";
 }
-
-
-$posts = $db->execute($query_string, $params);
-
-require "views/index.view.php";
