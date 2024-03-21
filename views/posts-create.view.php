@@ -2,7 +2,7 @@
     <?php require "components/navbar.php" ?>
 <h1>type shi</h1>
 
-<form>
+<form method="POST">
 <label>
 <span>Title:</span>
 <input name="title" />
@@ -14,6 +14,7 @@
 <option value="1">sport</option>
 <option value="2">music</option>
 <option value="3">food</option>
+</select>
 </label>
 <button>Save/Create</button>
 </form>
