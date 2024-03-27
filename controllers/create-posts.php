@@ -11,8 +11,8 @@ $db = new Database($config);
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     $errors = [];
 
-    
-    if (strlen($_POST["title"]) == 0 || strlen($_POST["title"]) > 255) {
+    $title = trim($_POST["title"]);
+    if (strlen($title) == 0 || strlen($title) > 255) {
         $errors["title"] = "nedrikst but mazs vai liels";
     }
         $max_category_id = $db->execute("SELECT MAX(id) FROM categories;", []) [0] ["MAX(id)"];

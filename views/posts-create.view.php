@@ -5,7 +5,7 @@
 <form method="POST">
 <label>
 <span>Title:</span>
-<input name="title" />
+<input name="title" value="<?= $_POST["title"] ?? "" ?>"/>
 <?php if(isset($errors["title"])) { ?>
 <p><?= $errors["title"] ?></p>
 <?php } ?>
