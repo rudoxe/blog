@@ -6,6 +6,9 @@
 <label>
 <span>Title:</span>
 <input name="title" />
+<?php if(isset($errors["title"])) { ?>
+<p><?= $errors["title"] ?></p>
+<?php } ?>
 </label>
 
 <label>
@@ -15,6 +18,9 @@
 <option value="2">music</option>
 <option value="3">food</option>
 </select>
+<?php if(isset($errors["category_id"])) { ?>
+<p><?= $errors["category_id"] ?></p>
+<?php } ?>
 </label>
 <button>Save/Create</button>
 </form>
