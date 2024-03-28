@@ -35,3 +35,7 @@ li {
     padding: 15px;
     margin-bottom: 15px;
 }
+
+.delete-form {
+    display: inline-block;
+}

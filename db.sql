@@ -42,3 +42,5 @@ WHERE id = 2;
 
 
 SELECT * FROM posts;
+
+DELETE FROM posts WHERE id = 6;
