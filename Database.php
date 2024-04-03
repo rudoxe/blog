@@ -22,7 +22,7 @@ class Database {
         
         $query->execute($params);
         
-        return $query->fetchAll();
+        return $query;
         
 }
 }

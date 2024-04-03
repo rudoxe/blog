@@ -15,7 +15,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     if (strlen($title) == 0 || strlen($title) > 255) {
         $errors["title"] = "nedrikst but mazs vai liels";
     }
-        $max_category_id = $db->execute("SELECT MAX(id) FROM categories;", []) [0] ["MAX(id)"];
+        $max_category_id = $db->execute("SELECT MAX(id) FROM categories;", [])->fetch()["MAX(id)"];
         if ($_POST["category_id"] > $max_category_id) {
             $errors["category_id"] = "Nav atbilstosas kategorijas";
         }

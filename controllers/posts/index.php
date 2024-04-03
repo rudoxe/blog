@@ -24,7 +24,7 @@ if(isset($_GET['name']) && $_GET["name"] != "") {
 }
 
 $page_title = "Posts";
-$posts = $db->execute($query_string, $params);
+$posts = $db->execute($query_string, $params)->fetchAll();
 
 $page_title = "Posts";
 
