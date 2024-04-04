@@ -1,4 +1,2 @@
-<h1>One posts</h1>
+<?=$post["title"]?>
 
-<?php
-?><?=$post["title"]?>

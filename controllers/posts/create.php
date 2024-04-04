@@ -1,18 +1,16 @@
 <?php
 
 require "functions.php";
-
+require "Validator.php";
 require "Database.php";
 $config = require "config.php";
 $db = new Database($config);
 
-
-
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     $errors = [];
 
-    $title = trim($_POST["title"]);
-    if (strlen($title) == 0 || strlen($title) > 255) {
+    $title = $_POST["title"];
+    if (!Validator::string($title, max: 255)) {
         $errors["title"] = "nedrikst but mazs vai liels";
     }
         $max_category_id = $db->execute("SELECT MAX(id) FROM categories;", [])->fetch()["MAX(id)"];
