@@ -10,7 +10,6 @@ $params = [":id" => $_GET["id"]];
 $post = $db->execute($query, $params)->fetch();
 
 
-
 require "views/posts/show.view.php";
 
 

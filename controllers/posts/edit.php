@@ -1,6 +1,6 @@
 <?php
 
-require "functions.php";
+
 require "Validator.php";
 require "Database.php";
 $config = require "config.php";
@@ -19,17 +19,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         if (empty($errors)) {
-            $query = "INSERT INTO posts (title, category_id)
-            VALUES (:title, :category_id)";
+            $query = "UPDATE posts SET title = :title, category_id = :category_id WHERE id = :id";
     $params = [
         ":title" => $_POST["title"],
-        ":category_id" => $_POST["category_id"]
+        ":category_id" => $_POST["category_id"],
+        ":id" => $_POST["id"]
     ];
     $db->execute($query, $params);  
     header("Location: /");
     die(); 
 }
 }
-$page_title = "Create A Post";
 
-require "views/posts/create.view.php";
+$query = "SELECT * FROM posts WHERE id = :id";
+$params = [":id" => $_GET["id"]];
+$post = $db->execute($query, $params)->fetch();
+
+$page_title = "Edit a post";
+require "views/posts/edit.view.php";
