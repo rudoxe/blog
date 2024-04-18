@@ -2,25 +2,37 @@
 
 class Validator {
 
-    public static function string($value, $min = 0, $max = INF) {
-        $value = trim($value);
+  // Pure method - tāpēc static
+  public static function string($data, $min = 0, $max = INF) {
+   $data = trim($data);
 
-        return is_string($value)
-        && strlen($value) > $min
-        && strlen($value) <= $max;
-    }
+    return  is_string($data)
+            && strlen($data) >= $min
+            && strlen($data) <= $max;
+  }
+  
+  public static function number($data, $min = 0, $max = INF) {
+    $data = trim($data);
+ 
+     return  is_numeric($data)
+             && $data >= $min
+             && $data <= $max;
+   }
 
-    public static function number($value, $min = 0, $max = INF) {
-        $value = trim($value);
+   public static function email($value) {
+      return filter_var($value, FILTER_VALIDATE_EMAIL);
+   }
 
-        return is_numeric($value)
-        && $value >= $min
-        && $value <= $max;
-    }
+   public static function password($value) {
+      $minLength = 8;
+      $maxLength = 20;
+
+
+      return preg_match('/[A-Z]/', $value) &&      // Check for uppercase letters
+           preg_match('/[a-z]/', $value) &&      // Check for lowercase letters
+           preg_match('/[0-9]/', $value) &&      // Check for digits
+           preg_match('/[^a-zA-Z0-9]/', $value);  // Check for special characters
+   }
+
 
 }
-
-$aboli = 6;
-Validator::number($aboli, min: 2, max: 14);
-
-
