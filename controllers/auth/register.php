@@ -45,4 +45,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 $title = "Register";
-require "views/posts/register.view.php";
+require "../views/auth/register.view.php";

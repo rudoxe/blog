@@ -3,8 +3,8 @@
 $title = "Login";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    require "Validator.php";
-    require "Database.php";
+    require "../Core/Validator.php";
+    require "../Core/Database.php";
     $config = require "config.php";
     $db = new Database($config);
 
@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ];
 
     $user = $db->execute($query, $params)->fetch();
-    if (!$user && password_verify($_POST["password"], $user["password"])) {
+    if (!$user && password_verify($_POST["password"], $user["PASSWORD"])) {
 
     } else {
         $errors["email"] = "Invalid email or password";
@@ -25,4 +25,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     dd($user);
 }
 
-require "views/posts/login.view.php";
+require "../views/auth/login.view.php";

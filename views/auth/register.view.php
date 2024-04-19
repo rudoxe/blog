@@ -1,10 +1,10 @@
-<?php require "views/components/head.php" ?>
+<?php require "../views/components/head.php" ?>
 
 <form method="POST">
-  <h1>Login</h1>
+  <h1>Register</h1>
 
   <label>
-    Email:
+    email:
     <input name="email" value="<?= $_POST["email"] ?? "" ?>" />
   </label>
 
@@ -13,10 +13,10 @@
   <?php } ?>
 
   <label>
-    Password:
+    Password <span>(atleast 1 uppercase letter, 1 lowercase, 1 digit, 1 spec char)</span>:
     <input name="password" />
   </label>
-  <button>Login</button>
+  <button>Register</button>
 </form>
 
-<?php require "views/components/footer.php" ?>
+<?php require "../views/components/footer.php" ?>
